@@ -28,7 +28,7 @@ var Livre = function(){
         let typeEtiquette = Math.floor(Math.random()*4);
 
         ctx.fillStyle = "rgba(255,255,255,0.5)";
-        let marge = 3;
+        let marge = Math.floor(Math.random()*4) + 1;
 
         switch (typeEtiquette) {
             case 0:
@@ -137,7 +137,7 @@ var genererLivres = function (nbLivres) {
 	for (var i = 0 ; i < nbLivres ; i ++ ) {
 		var unLivre = new Livre();
 		unLivre.colorer();
-		unLivre.dimensions.hauteur = Math.floor((Math.random()*30)+30);
+		unLivre.dimensions.hauteur = Math.floor((Math.random()*40)+30);
 		unLivre.dimensions.largeur = Math.floor((Math.random()*50)+20);
 		unLivre.dimensions.epaisseur = Math.floor((Math.random()*15)+10);
 		tabLivres.push(unLivre);
