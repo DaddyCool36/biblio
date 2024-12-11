@@ -25,21 +25,23 @@ var Livre = function(){
 		ctx.fillRect(this.position.x, this.position.y, this.dimensions.epaisseur, -this.dimensions.hauteur);
 
         // etiquettes
-        let typeEtiquette = 1;
+        let typeEtiquette = 2;
 
         ctx.fillStyle = "rgba(255,255,255,0.5)";
         let marge = 3;
 
         switch (typeEtiquette) {
             case 0:
-                
-                
                 ctx.fillRect(this.position.x + marge, this.position.y -5, this.dimensions.epaisseur - (2 * marge), -this.dimensions.hauteur + 10);
                 break;
         
             case 1:
                 ctx.fillRect(this.position.x + marge, this.position.y -3, this.dimensions.epaisseur - (2 * marge), -this.dimensions.hauteur + 20);
                 ctx.fillRect(this.position.x + marge, this.position.y - this.dimensions.hauteur + marge, this.dimensions.epaisseur - (2 * marge), 10);
+                break;
+            case 2:
+                ctx.fillRect(this.position.x + marge, this.position.y - 8, this.dimensions.epaisseur - (2 * marge), -this.dimensions.hauteur + 25);
+                ctx.fillRect(this.position.x + marge, this.position.y - this.dimensions.hauteur + marge, this.dimensions.epaisseur - (2 * marge), 3);
                 break;
             default:
                 break;
