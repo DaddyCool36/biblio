@@ -32,7 +32,7 @@ var Bibliotheque = function() {
 	this.couleur = {"teinte":20, "saturation":40, "luminosite":40};
 	this.dimensions = {"largeur":400, "epaisseur":8};
 	this.nbEtageres = 1;
-	this.hauteurEtagere = 60;
+	this.hauteurEtagere = 80;
 	this.pos = {"x" : 10, "y" : 10};
 	
 	// dessin de la bibliotheque
@@ -109,7 +109,7 @@ var genererLivres = function (nbLivres) {
 	for (var i = 0 ; i < nbLivres ; i ++ ) {
 		var unLivre = new Livre();
 		unLivre.colorer();
-		unLivre.dimensions.hauteur = Math.floor((Math.random()*30)+20);
+		unLivre.dimensions.hauteur = Math.floor((Math.random()*30)+30);
 		unLivre.dimensions.largeur = Math.floor((Math.random()*50)+20);
 		unLivre.dimensions.epaisseur = Math.floor((Math.random()*20)+5);
 		tabLivres.push(unLivre);
