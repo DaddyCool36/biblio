@@ -4,6 +4,8 @@ var Livre = function(){
 	this.dimensions = {"hauteur":10, "largeur":10, "epaisseur":10};
 	this.titre = "Nouveau livre";
 	this.position = {"x":0, "y":0};
+	this.typeEtiquette = Math.floor(Math.random()*4);
+	this.marge = Math.floor(Math.random()*5) + 1;
 	
 	// coloration du livre : une couleur aléatoire
 	this.colorer = function() {
@@ -25,28 +27,28 @@ var Livre = function(){
 		ctx.fillRect(this.position.x, this.position.y, this.dimensions.epaisseur, -this.dimensions.hauteur);
 
         // etiquettes
-        let typeEtiquette = Math.floor(Math.random()*4);
+        // let typeEtiquette = Math.floor(Math.random()*4);
 
         ctx.fillStyle = "rgba(255,255,255,0.5)";
-        let marge = Math.floor(Math.random()*4) + 1;
+        // let marge = Math.floor(Math.random()*5) + 1;
 
-        switch (typeEtiquette) {
+        switch (this.typeEtiquette) {
             case 0:
-                ctx.fillRect(this.position.x + marge, this.position.y -5, this.dimensions.epaisseur - (2 * marge), -this.dimensions.hauteur + 10);
+                ctx.fillRect(this.position.x + this.marge, this.position.y -5, this.dimensions.epaisseur - (2 * this.marge), -this.dimensions.hauteur + 10);
                 break;
         
             case 1:
-                ctx.fillRect(this.position.x + marge, this.position.y -3, this.dimensions.epaisseur - (2 * marge), -this.dimensions.hauteur + 20);
-                ctx.fillRect(this.position.x + marge, this.position.y - this.dimensions.hauteur + marge, this.dimensions.epaisseur - (2 * marge), 10);
+                ctx.fillRect(this.position.x + this.marge, this.position.y -3, this.dimensions.epaisseur - (2 * this.marge), -this.dimensions.hauteur + 20);
+                ctx.fillRect(this.position.x + this.marge, this.position.y - this.dimensions.hauteur + this.marge, this.dimensions.epaisseur - (2 * this.marge), 10);
                 break;
             case 2:
-                ctx.fillRect(this.position.x + marge, this.position.y - 8, this.dimensions.epaisseur - (2 * marge), -this.dimensions.hauteur + 25);
-                ctx.fillRect(this.position.x + marge, this.position.y - this.dimensions.hauteur + marge, this.dimensions.epaisseur - (2 * marge), 3);
+                ctx.fillRect(this.position.x + this.marge, this.position.y - 8, this.dimensions.epaisseur - (2 * this.marge), -this.dimensions.hauteur + 25);
+                ctx.fillRect(this.position.x + this.marge, this.position.y - this.dimensions.hauteur + this.marge, this.dimensions.epaisseur - (2 * this.marge), 3);
                 break;
             case 3:
-                ctx.fillRect(this.position.x + marge, this.position.y - this.dimensions.hauteur + marge, this.dimensions.epaisseur - (2 * marge), 3);
-                ctx.fillRect(this.position.x + marge, this.position.y - 12, this.dimensions.epaisseur - (2 * marge), -this.dimensions.hauteur + 25);
-                ctx.fillRect(this.position.x + marge, this.position.y - marge, this.dimensions.epaisseur - (2 * marge), - 5);
+                ctx.fillRect(this.position.x + this.marge, this.position.y - this.dimensions.hauteur + this.marge, this.dimensions.epaisseur - (2 * this.marge), 3);
+                ctx.fillRect(this.position.x + this.marge, this.position.y - 12, this.dimensions.epaisseur - (2 * this.marge), -this.dimensions.hauteur + 25);
+                ctx.fillRect(this.position.x + this.marge, this.position.y - this.marge, this.dimensions.epaisseur - (2 * this.marge), - 5);
                 break;
             default:
                 break;
@@ -141,6 +143,15 @@ var genererLivres = function (nbLivres) {
 		unLivre.dimensions.largeur = Math.floor((Math.random()*50)+20);
 		unLivre.dimensions.epaisseur = Math.floor((Math.random()*15)+10);
 		tabLivres.push(unLivre);
+
+		let isCollection = Math.floor(Math.random()*10);
+		if (isCollection == 0) {
+			let nbLivresSerie = Math.floor(Math.random()*10) + 1;
+			for (let j = 0 ; j < nbLivresSerie ; j++) {
+				tabLivres.push(unLivre);
+				nbLivres--;
+			}
+		}
 	}
 	return tabLivres;
 };
