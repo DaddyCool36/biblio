@@ -1,17 +1,17 @@
 // un livre contient une couleur, des dimensions et un titre.
-var Livre = function(){
+var Livre = function() {
 	this.couleur = {"teinte":0, "saturation":0, "luminosite":50};
 	this.dimensions = {"hauteur":10, "largeur":10, "epaisseur":10};
 	this.titre = "Nouveau livre";
 	this.position = {"x":0, "y":0};
-	this.typeEtiquette = Math.floor(Math.random()*4);
-	this.marge = Math.floor(Math.random()*5) + 1;
+	this.typeEtiquette = alea(0, 4);
+	this.marge = alea(1, 6);
 	
 	// coloration du livre : une couleur aléatoire
 	this.colorer = function() {
-		var teinte = Math.floor((Math.random()*360)+0);
-		var saturation = Math.floor((Math.random()*70)+30);
-		var luminosite = Math.floor((Math.random()*50)+20);
+		var teinte = alea(0, 360);
+		var saturation = alea(30, 100);
+		var luminosite = alea(20, 70);
 		this.couleur = {"teinte":teinte, "saturation":saturation, "luminosite":luminosite};
 	};
 	
@@ -139,14 +139,14 @@ var genererLivres = function (nbLivres) {
 	for (var i = 0 ; i < nbLivres ; i ++ ) {
 		var unLivre = new Livre();
 		unLivre.colorer();
-		unLivre.dimensions.hauteur = Math.floor((Math.random()*30)+40);
-		unLivre.dimensions.largeur = Math.floor((Math.random()*50)+20);
-		unLivre.dimensions.epaisseur = Math.floor((Math.random()*15)+10);
+		unLivre.dimensions.hauteur = alea(40, 70);
+		unLivre.dimensions.largeur = alea(20, 70);
+		unLivre.dimensions.epaisseur = alea(10, 25);
 		tabLivres.push(unLivre);
 
-		let isCollection = Math.floor(Math.random()*10);
+		let isCollection = alea(0, 10);
 		if (isCollection == 0) {
-			let nbLivresSerie = Math.floor(Math.random()*10) + 1;
+			let nbLivresSerie = alea(1, 10);
 			for (let j = 0 ; j < nbLivresSerie ; j++) {
 				tabLivres.push(unLivre);
 				nbLivres--;
@@ -204,14 +204,14 @@ var MasterCanvas = function () {
 
 
 
-function changerCouleur()  {
-	var teinte = Math.floor((Math.random()*360)+0);
-	var saturation = Math.floor((Math.random()*70)+30);
-	var luminosite = Math.floor((Math.random()*50)+20);
-	var couleur = {"teinte":teinte, "saturation":saturation, "luminosite":luminosite};
+// function changerCouleur()  {
+// 	var teinte = Math.floor((Math.random()*360)+0);
+// 	var saturation = Math.floor((Math.random()*70)+30);
+// 	var luminosite = Math.floor((Math.random()*50)+20);
+// 	var couleur = {"teinte":teinte, "saturation":saturation, "luminosite":luminosite};
 	
-	return couleur;
-}
+// 	return couleur;
+// }
 
 function degraderCouleur(contexte, xSource, ySource, xDestination, yDestination, couleur) {
 	var degrade = contexte.createLinearGradient(xSource, ySource, xDestination, yDestination);
