@@ -139,7 +139,7 @@ var genererLivres = function (nbLivres) {
 	for (var i = 0 ; i < nbLivres ; i ++ ) {
 		var unLivre = new Livre();
 		unLivre.colorer();
-		unLivre.dimensions.hauteur = Math.floor((Math.random()*40)+30);
+		unLivre.dimensions.hauteur = Math.floor((Math.random()*30)+40);
 		unLivre.dimensions.largeur = Math.floor((Math.random()*50)+20);
 		unLivre.dimensions.epaisseur = Math.floor((Math.random()*15)+10);
 		tabLivres.push(unLivre);
@@ -155,6 +155,15 @@ var genererLivres = function (nbLivres) {
 	}
 	return tabLivres;
 };
+
+function alea(min = 0, max = 1) {
+	if (min > max) {
+		let tmp = min;
+		min = max;
+		max = tmp;
+	}
+	return Math.floor((Math.random() * (max-min)) + min);
+}
 
 
 
